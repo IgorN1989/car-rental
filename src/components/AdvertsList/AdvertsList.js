@@ -1,8 +1,9 @@
-import adverts from 'data/adverts.json';
-import { List } from './AdvertsList.styled';
 import { AdvertCard } from 'components/AdvertCard/AdvertCard';
+import { List } from './AdvertsList.styled';
 
-export const AdvertsList = () => {
+// ========================
+
+export const AdvertsList = ({ adverts }) => {
   return (
     <List>
       {adverts.map(advert => (

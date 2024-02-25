@@ -8,5 +8,5 @@ export const HeaderContainer = styled.header`
   flex-direction: row;
   align-items: center;
   justify-content: end;
-  padding: 6px ${p => p.theme.spacing(32)} 0 ${p => p.theme.spacing(32)};
+  padding: 6px ${p => p.theme.spacing(64)} 0 ${p => p.theme.spacing(64)};
 `;

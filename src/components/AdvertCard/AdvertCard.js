@@ -1,3 +1,7 @@
+import { useState } from 'react';
+
+import { ModalComponent } from 'components/Modal/Modal';
+import { getWord } from 'helpers/getWord';
 import {
   InfoButton,
   CarImage,
@@ -9,27 +13,33 @@ import {
   AdditionalInfo,
   ImageContainer,
 } from './AdvertCard.styled';
-import { getWord } from 'helpers/getWord';
+
+// ========================
 
 export const AdvertCard = ({ advert }) => {
   const {
-    id,
     year,
     make,
     model,
     type,
     img,
-    description,
-    fuelConsumption,
     engineSize,
-    accessories,
-    functionalities,
     rentalPrice,
     rentalCompany,
     address,
-    rentalConditions,
     mileage,
   } = advert;
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <CardContainer>
       <ImageContainer>
@@ -55,9 +65,14 @@ export const AdvertCard = ({ advert }) => {
           </div>
         </AdditionalInfo>
       </InfoBox>
-      <InfoButton>
+      <InfoButton onClick={openModal}>
         <ButtonTitle>Learn more</ButtonTitle>
       </InfoButton>
+      <ModalComponent
+        isOpen={isModalOpen}
+        onCloseModal={closeModal}
+        advert={advert}
+      />
     </CardContainer>
   );
 };

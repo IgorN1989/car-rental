@@ -81,6 +81,10 @@ export const AdditionalInfo = styled.div`
     &:not(:last-child) {
       border-right: 1px solid ${p => p.theme.colors.line};
     }
+
+    &:first-child {
+      padding-left: 0;
+    }
   }
 `;
 

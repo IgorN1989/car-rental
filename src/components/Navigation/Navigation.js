@@ -1,5 +1,6 @@
-// import { NavLink } from 'react-router-dom';
 import { NavList, NavPageLink } from './Navigation.styled';
+
+// ========================
 
 export const Navigation = () => {
   return (

@@ -3,7 +3,22 @@ import { fetchAdverts } from './operations';
 
 const advertsSlice = createSlice({
   name: 'adverts',
-  initialState: { items: [], favorites: [], isLoading: false, error: null },
+  initialState: {
+    items: [],
+    favoriteAdverts: [],
+    isLoading: false,
+    error: null,
+    pagination: {
+      page: 1,
+      limit: 12,
+    },
+  },
+
+  reducers: {
+    onLoadMore: state => {
+      state.pagination.page += 1;
+    },
+  },
 
   extraReducers: builder => {
     builder
@@ -22,7 +37,7 @@ const handlePending = state => {
 const handleFetchFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.items = action.payload;
+  state.items.push(...action.payload);
 };
 
 const handleRejected = (state, action) => {
