@@ -46,7 +46,6 @@ export const ModalComponent = ({ isOpen, onCloseModal, advert }) => {
   } = advert;
 
   const features = accessories.concat(functionalities);
-  console.log(features);
 
   return (
     <Modal
