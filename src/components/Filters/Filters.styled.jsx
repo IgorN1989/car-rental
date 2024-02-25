@@ -1,18 +1,21 @@
 import styled from 'styled-components';
 
-export const Form = styled.form`
+export const FiltersContainer = styled.form`
   display: flex;
   flex-direction: row;
   align-items: end;
-  /* width: 859px; */
-  min-height: 74px;
+  /* min-height: 74px; */
   gap: ${p => p.theme.spacing(8)};
   outline: 1px solid red;
 `;
 
-export const BrandSelect = styled.input`
+export const BrandSelect = styled.select`
   width: 224px;
+  height: 48px;
   border-radius: ${p => p.theme.radius};
+  border: none;
+  padding: ${p => p.theme.spacing(7)} ${p => p.theme.spacing(9)};
+  background-color: ${p => p.theme.colors.selectBackground};
 `;
 
 export const SearchButton = styled.button`

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const CatalogContainer = styled.div`
   height: calc(100vh - 50px);
   overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +11,7 @@ export const CatalogContainer = styled.div`
   padding: ${p => p.theme.spacing(25)} ${p => p.theme.spacing(64)};
 
   &::-webkit-scrollbar {
-    width: 8px;
+    width: 12px;
   }
 
   &::-webkit-scrollbar-track {

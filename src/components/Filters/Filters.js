@@ -1,6 +1,12 @@
 import makes from 'data/makes.json';
 import { useSearchParams } from 'react-router-dom';
-import { ButtonTitle, Form, SearchButton } from './Filters.styled';
+import {
+  BrandSelect,
+  ButtonTitle,
+  FiltersContainer,
+  SearchButton,
+} from './Filters.styled';
+import { useFormik } from 'formik';
 
 // export const Filters = ({ filters: { brand, price, mileage } }) => {
 export const Filters = () => {
@@ -12,19 +18,22 @@ export const Filters = () => {
   //   setParams(params);
   // };
 
+  const options = makes.map(make => ({ value: make, label: make }));
+
   return (
-    <Form>
-      <select value={''}>
+    <FiltersContainer>
+      {/* <BrandSelect value={''}>
         {makes.map((make, index) => (
           <option key={index}>{make}</option>
         ))}
-      </select>
+      </BrandSelect> */}
+
       <input />
       <input />
       <input />
       <SearchButton type="submit">
         <ButtonTitle>Search</ButtonTitle>
       </SearchButton>
-    </Form>
+    </FiltersContainer>
   );
 };
