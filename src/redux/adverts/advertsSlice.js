@@ -1,22 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchAdverts } from './operations';
 
+const initialState = {
+  items: [],
+  favoriteAdverts: [],
+  isLoading: false,
+  error: null,
+  pagination: {
+    page: 1,
+    limit: 12,
+    totalPages: 1,
+  },
+};
+
 const advertsSlice = createSlice({
   name: 'adverts',
-  initialState: {
-    items: [],
-    favoriteAdverts: [],
-    isLoading: false,
-    error: null,
-    pagination: {
-      page: 1,
-      limit: 12,
-    },
-  },
+  initialState,
 
   reducers: {
-    onLoadMore: state => {
-      state.pagination.page += 1;
+    setPage: (state, action) => {
+      state.pagination.page = action.payload;
+    },
+    setTotalPages: (state, action) => {
+      state.pagination.totalPages = action.payload;
     },
   },
 
@@ -29,6 +35,7 @@ const advertsSlice = createSlice({
 });
 
 export const advertsReducer = advertsSlice.reducer;
+export const { setPage, setTotalPage } = advertsSlice.actions;
 
 const handlePending = state => {
   state.isLoading = true;
@@ -38,6 +45,8 @@ const handleFetchFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
   state.items.push(...action.payload);
+  const totalItems = state.items.length;
+  state.pagination.totalPages = Math.ceil(totalItems / state.pagination.limit);
 };
 
 const handleRejected = (state, action) => {

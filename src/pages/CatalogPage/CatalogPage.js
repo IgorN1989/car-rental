@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { setPage } from '../../redux/adverts/advertsSlice';
 import {
   selectAdverts,
   selectError,
   selectIsLoading,
-  selectPagination,
+  selectPage,
+  selectTotalPages,
 } from '../../redux/adverts/selectors';
 import { fetchAdverts } from '../../redux/adverts/operations';
 
@@ -29,14 +31,16 @@ function CatalogPage() {
   const adverts = useSelector(selectAdverts);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const { page, limit } = useSelector(selectPagination);
+  const page = useSelector(selectPage);
+  const totalPages = useSelector(selectTotalPages);
+  console.log('total', totalPages);
 
   useEffect(() => {
-    dispatch(fetchAdverts({ page, limit }));
-  }, [dispatch, page, limit]);
+    dispatch(fetchAdverts({ page, limit: 12 }));
+  }, [dispatch, page]);
 
   const onLoadMore = () => {
-    dispatch(fetchAdverts({ page: page + 1, limit }));
+    dispatch(setPage(page + 1));
   };
 
   return (
