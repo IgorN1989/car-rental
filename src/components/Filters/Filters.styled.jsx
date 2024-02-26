@@ -6,10 +6,14 @@ export const FiltersContainer = styled.form`
   align-items: end;
   /* min-height: 74px; */
   gap: ${p => p.theme.spacing(8)};
-  outline: 1px solid red;
 `;
 
-export const BrandSelect = styled.select`
+export const SelectContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Select = styled.select`
   width: 224px;
   height: 48px;
   border-radius: ${p => p.theme.radius};

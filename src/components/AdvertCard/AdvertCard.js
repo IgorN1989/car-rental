@@ -43,7 +43,7 @@ export const AdvertCard = ({ advert }) => {
   return (
     <CardContainer>
       <ImageContainer>
-        <CarImage src={img} alt={`${make} ${model}`} />
+        <CarImage loading="lazy" src={img} alt={`${make} ${model}`} />
       </ImageContainer>
       <InfoBox>
         <MainInfo>
