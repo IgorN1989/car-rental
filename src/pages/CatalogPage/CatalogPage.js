@@ -7,7 +7,6 @@ import {
   selectError,
   selectIsLoading,
   selectPage,
-  selectTotalPages,
 } from '../../redux/adverts/selectors';
 import { fetchAdverts } from '../../redux/adverts/operations';
 
