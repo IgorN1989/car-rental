@@ -11,8 +11,6 @@ export const selectPagination = state => state.adverts.pagination;
 
 export const selectPage = state => selectPagination(state).page;
 
-export const selectTotalPages = state => selectPagination(state).totalPages;
-
 // export const selectFilters = state => state.filters;
 
 // export const selectVisibleAdverts = createSelector(

@@ -11,7 +11,6 @@ import './styles/fonts.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* <BrowserRouter basename="/car-rental"> */}
     <Provider store={store}>
       <BrowserRouter>
         <ThemeProvider theme={theme}>

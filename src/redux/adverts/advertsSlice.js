@@ -9,7 +9,6 @@ const initialState = {
   pagination: {
     page: 1,
     limit: 12,
-    totalPages: 1,
   },
 };
 
@@ -45,8 +44,6 @@ const handleFetchFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
   state.items.push(...action.payload);
-  const totalItems = state.items.length;
-  state.pagination.totalPages = Math.ceil(totalItems / state.pagination.limit);
 };
 
 const handleRejected = (state, action) => {

@@ -9,16 +9,16 @@ import {
 export const Filters = () => {
   return (
     <FiltersContainer>
-      <BrandSelect value={''}>
+      <BrandSelect value={''} onChange={e => console.log(e.target.value)}>
         {makes.map((make, index) => (
           <option key={index}>{make}</option>
         ))}
       </BrandSelect>
 
+      {/* <input />
       <input />
-      <input />
-      <input />
-      <SearchButton type="submit">
+      <input /> */}
+      <SearchButton>
         <ButtonTitle>Search</ButtonTitle>
       </SearchButton>
     </FiltersContainer>

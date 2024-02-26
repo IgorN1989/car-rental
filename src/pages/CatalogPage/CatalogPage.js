@@ -32,8 +32,6 @@ function CatalogPage() {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const page = useSelector(selectPage);
-  const totalPages = useSelector(selectTotalPages);
-  console.log('total', totalPages);
 
   useEffect(() => {
     dispatch(fetchAdverts({ page, limit: 12 }));
@@ -42,6 +40,8 @@ function CatalogPage() {
   const onLoadMore = () => {
     dispatch(setPage(page + 1));
   };
+
+  const isLastPage = adverts.length % 12 !== 0;
 
   return (
     <CatalogContainer>
@@ -56,7 +56,7 @@ function CatalogPage() {
           <Filters />
           <AdvertsList adverts={adverts} />
           {!adverts?.length && <Message>No Matches</Message>}
-          {adverts?.length > 0 && (
+          {adverts?.length > 0 && !isLastPage && (
             <LoadMoreButton onClick={onLoadMore}>Load more</LoadMoreButton>
           )}
         </Content>
