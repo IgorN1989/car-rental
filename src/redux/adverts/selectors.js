@@ -1,6 +1,3 @@
-// import { createSelector } from '@reduxjs/toolkit';
-// import { matchSorter } from 'match-sorter';
-
 export const selectAdverts = state => state.adverts.items;
 
 export const selectIsLoading = state => state.adverts.isLoading;
@@ -11,11 +8,6 @@ export const selectPagination = state => state.adverts.pagination;
 
 export const selectPage = state => selectPagination(state).page;
 
-// export const selectFilters = state => state.filters;
+export const selectModalContent = state => state.adverts.modal.content;
 
-// export const selectVisibleAdverts = createSelector(
-//   [selectAdverts, selectFilters],
-//   (adverts, filters) => {
-//     return matchSorter(adverts, filters, { keys: ['make'] });
-//   }
-// );
+export const selectModalStatus = state => state.adverts.modal.isOpen;

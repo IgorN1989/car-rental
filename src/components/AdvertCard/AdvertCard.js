@@ -1,6 +1,3 @@
-import { useState } from 'react';
-
-import { ModalComponent } from 'components/Modal/Modal';
 import { getWord } from 'helpers/getWord';
 import {
   InfoButton,
@@ -13,6 +10,8 @@ import {
   AdditionalInfo,
   ImageContainer,
 } from './AdvertCard.styled';
+import { useDispatch } from 'react-redux';
+import { onOpenModal } from '../../redux/adverts/advertsSlice';
 
 // ========================
 
@@ -30,14 +29,10 @@ export const AdvertCard = ({ advert }) => {
     mileage,
   } = advert;
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const onLearnMore = () => {
+    dispatch(onOpenModal(advert));
   };
 
   return (
@@ -65,14 +60,9 @@ export const AdvertCard = ({ advert }) => {
           </div>
         </AdditionalInfo>
       </InfoBox>
-      <InfoButton onClick={openModal}>
+      <InfoButton onClick={onLearnMore}>
         <ButtonTitle>Learn more</ButtonTitle>
       </InfoButton>
-      <ModalComponent
-        isOpen={isModalOpen}
-        onCloseModal={closeModal}
-        advert={advert}
-      />
     </CardContainer>
   );
 };

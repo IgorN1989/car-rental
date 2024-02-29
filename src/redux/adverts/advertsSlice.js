@@ -10,6 +10,10 @@ const initialState = {
     page: 1,
     limit: 12,
   },
+  modal: {
+    content: null,
+    isOpen: false,
+  },
 };
 
 const advertsSlice = createSlice({
@@ -23,6 +27,14 @@ const advertsSlice = createSlice({
     setTotalPages: (state, action) => {
       state.pagination.totalPages = action.payload;
     },
+    onOpenModal: (state, action) => {
+      state.modal.isOpen = true;
+      state.modal.content = action.payload;
+    },
+    onCloseModal: (state, action) => {
+      state.modal.isOpen = false;
+      state.modal.content = null;
+    },
   },
 
   extraReducers: builder => {
@@ -34,7 +46,8 @@ const advertsSlice = createSlice({
 });
 
 export const advertsReducer = advertsSlice.reducer;
-export const { setPage, setTotalPage } = advertsSlice.actions;
+export const { setPage, setTotalPage, onOpenModal, onCloseModal } =
+  advertsSlice.actions;
 
 const handlePending = state => {
   state.isLoading = true;
